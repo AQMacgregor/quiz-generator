@@ -23,7 +23,7 @@ describe('AddQuestionComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create', () => { 
     expect(component).toBeTruthy();
   });
   it('add new questions', inject([QuestionService], (service: QuestionService) =>{
@@ -32,7 +32,7 @@ describe('AddQuestionComponent', () => {
     component.question.answer = 'New Answer';
     component.addQuestion()
     expect(service.getQuestions().length).toBe(countBefore + 1)
-  });
+  }));
   it('inform when question added', () =>{
     component.question.question = 'Another New Question';
     component.question.answer = 'Another New Answer';
@@ -41,5 +41,15 @@ describe('AddQuestionComponent', () => {
     expect(component.question.question).toBeUndefined();
     expect(component.question.answer).toBeUndefined();
     expect(component.message).toBe(component.MESSAGE);
-  })
+  });
+  it('not add an invalid question', inject([QuestionService], (service: QuestionService) =>{
+    component.question.question = '';
+    component.question.answer = '';
+    let countBefore = service.getQuestions().length
+    component.addQuestion()
+    expect(service.getQuestions().length).toBe(countBefore)
+    component.question.question = 'Yet Another New Question';
+    component.addQuestion()
+    expect(service.getQuestions().length).toBe(countBefore)
+  }))
 });

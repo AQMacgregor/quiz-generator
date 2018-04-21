@@ -1,7 +1,8 @@
 <h2>Take Quiz</h2>
-
-<div id="question">{{questionVM.question}}</div>
-<div id="answer">{{questionVM.answer}}</div>
-<div id="message">{{message}}</div>
-<button id="showAnswer" (click)="showAnswer()">Show Answer</button>
-<button id="showQuestion" (click)="nextQuestion()">Show Next Question</button>
+<div class="questions">
+	<div id="question">{{questionVM.question}}</div>
+	<div id="answer">{{questionVM.answer}}</div>
+	<div id="message">{{message}}</div>
+</div>
+<button class="btn" id="showAnswer" (click)="showAnswer()">Show Answer</button>
+<button class="btn" id="showQuestion" (click)="nextQuestion()">Show Next Question</button>

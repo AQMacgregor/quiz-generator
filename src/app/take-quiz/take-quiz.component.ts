@@ -24,6 +24,7 @@ export class TakeQuizComponent implements OnInit {
       delete this.questionVM.answer
     } else {
       this.questionVM = new Question
+      this.question = new Question
       this.message = this.MESSAGE
     }
   }

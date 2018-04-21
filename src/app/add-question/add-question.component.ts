@@ -13,9 +13,14 @@ export class AddQuestionComponent implements OnInit {
   message:string;
   constructor(private questionService: QuestionService) { }
   addQuestion(){
-    this.questionService.addQuestion(this.question);
-    this.question = new Question;
-    this.message = this.MESSAGE
+    if(this.question.question && this.question.question !== '' &&
+      this.question.answer && this.question.answer !== ''){
+      this.questionService.addQuestion(this.question);
+      this.question = new Question;
+      this.message = this.MESSAGE
+    }else{
+      delete this.message
+    }
   }
   ngOnInit() {
     this.question = new Question;
